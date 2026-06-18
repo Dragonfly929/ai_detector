@@ -94,7 +94,7 @@ with st.sidebar:
     choice = st.radio("Navigate", list(PAGES.keys()), label_visibility="collapsed")
     st.markdown("---")
     st.markdown(
-        "<small>UTM · Știința Datelor<br>Platforme Avansate de Date</small>",
+        "<small>UTM · Știința Datelor<br>Platforme pentru analiza avansată de date</small>",
         unsafe_allow_html=True,
     )
 
