@@ -60,6 +60,8 @@ cross-industry process for data mining — as taught in the
             "Human-written essays labelled `0` and AI-generated essays labelled `1`.  \n\n"
             "You can **upload your own CSV** (same schema) in the sidebar of most pages."
         )
+        st.markdown(
+            "🔗 [View dataset on Kaggle](https://www.kaggle.com/datasets/sunilthite/llm-detect-ai-generated-text-dataset)",)
 
         st.markdown("### Technologies")
         for tech in ["Python · scikit-learn", "Streamlit", "TF-IDF (bi-grams)", "Plotly / Matplotlib", "CRISP-DM framework"]:

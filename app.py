@@ -66,8 +66,15 @@ st.markdown("""
     margin:3px;
 }
 .crisp-dot {width:8px;height:8px;border-radius:50%;display:inline-block;}
+
+/* Global font size */
+html, body, [class*="css"], .stMarkdown p, .stMarkdown li {
+    font-size: 16px;
+}
 </style>
 """, unsafe_allow_html=True)
+
+
 
 # ── Sidebar navigation ────────────────────────────────────────────────────────
 PAGES = {

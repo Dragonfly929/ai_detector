@@ -5,36 +5,43 @@ def show():
     st.markdown('<span class="phase-badge phase-1">Phase 1</span>', unsafe_allow_html=True)
     st.title("Business Understanding")
 
-    tab1, tab2, tab3, tab4 = st.tabs([
+    tab1, tab2, tab3 = st.tabs([
         "📌 Business Objectives",
         "📋 Situation Assessment",
         "🎯 Data Mining Goals",
-        "📅 Project Plan",
     ])
 
     with tab1:
         st.markdown("### Business Objective")
         st.markdown("""
-The proliferation of large language models (GPT-4, LLaMA 3, PaLM 2, etc.) has made it
-trivially easy to generate fluent academic text. Educational institutions face a growing
-risk of **academic dishonesty** when students submit AI-generated essays as their own work.
+        We've reached a point where AI-generated content is everywhere — comments, reviews, photos, 
+        videos — and telling what's real from what's synthetic has become nearly impossible. 
+        (Including this very text you're reading, which is... well, you get the irony. Special am pus prompt ca sa scrie aceasta)).)
 
-**Primary goal:** Build a reliable, explainable classifier that can determine whether a
-piece of text was authored by a human student or produced by an AI model.
+        The lines have blurred to the point where even experts struggle to distinguish authentic 
+        human expression from machine output. As deepfakes improve and language models grow more 
+        sophisticated, trust in digital content is eroding across every platform.
+
+        **The (slightly absurd) mission:** Build a detection system that can identify AI-generated 
+        text as a first step toward tackling this problem across all content types. Because if 
+        we can't even tell if a review was written by a person or a bot, we might as well start 
+        somewhere.
         """)
 
         st.markdown("### Stakeholders")
         col1, col2, col3 = st.columns(3)
-        with col1:
-            st.markdown("#### 🎓 Universities")
-            st.markdown("Maintain academic integrity; flag suspicious submissions before grading.")
-        with col2:
-            st.markdown("#### 📝 Instructors")
-            st.markdown("Fast, objective second opinion before launching a misconduct inquiry.")
-        with col3:
-            st.markdown("#### 👩‍🎓 Students")
-            st.markdown("Fair evaluation; avoid false accusations with confidence scores.")
 
+        with col1:
+            st.markdown("#### 🌐 Platform Owners")
+            st.markdown("Restore trust in user-generated content; filter bot-generated spam and fake engagement.")
+
+        with col2:
+            st.markdown("#### 📱 Everyday Users")
+            st.markdown("Know whether you're reading a genuine human opinion or a machine's best impression of one.")
+
+        with col3:
+            st.markdown("#### 🤖 AI Companies")
+            st.markdown("Understand the limits of their own models and develop more responsible deployment practices.")
         st.markdown("### Business Success Criteria")
         st.success("""
 - **Accuracy ≥ 90 %** on held-out essays not seen during training.
@@ -90,17 +97,3 @@ piece of text was authored by a human student or produced by an AI model.
 **Type:** Supervised binary text classification  
 **Feature representation:** TF-IDF bi-grams + stylometric features  
         """)
-
-    with tab4:
-        st.markdown("### Project Plan (aligned to course syllabus)")
-        plan = [
-            ("Week 1–2", "Business Understanding", "Define problem, success criteria, stakeholder map"),
-            ("Week 3–4", "Data Understanding", "EDA: distributions, word clouds, length analysis"),
-            ("Week 5–6", "Data Preparation", "Cleaning, stopword removal, feature engineering, balancing"),
-            ("Week 7–8", "Modeling", "Train TF-IDF + 4 classifiers; hyperparameter search"),
-            ("Week 9–10", "Evaluation", "Cross-validation, confusion matrices, ROC curves"),
-            ("Week 11–12", "Deployment", "Streamlit app with live inference + upload support"),
-            ("Week 13", "Documentation", "Final report + project presentation"),
-        ]
-        for week, phase, activity in plan:
-            st.markdown(f"**{week}** · `{phase}` — {activity}")
