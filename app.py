@@ -13,7 +13,10 @@ st.markdown("""
 /* Sidebar */
 [data-testid="stSidebar"] {background: #0f172a;}
 [data-testid="stSidebar"] * {color: #e2e8f0 !important;}
-[data-testid="stSidebar"] .stRadio > label {color: #94a3b8 !important; font-size:0.78rem;}
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] label * {
+    font-size: 1rem !important;
+}
 
 /* Main heading */
 .hero-title {
