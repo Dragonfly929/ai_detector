@@ -1,6 +1,7 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from matplotlib.pyplot import clf
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -166,6 +167,29 @@ a numerical vector. Key parameters:
                 )
                 fig.update_layout(yaxis=dict(autorange="reversed"))
                 st.plotly_chart(fig, use_container_width=True)
+            elif hasattr(clf, "feature_log_prob_"):
+                # log P(word | class) — difference shows which words favor AI vs Human
+                log_prob_diff = clf.feature_log_prob_[1] - clf.feature_log_prob_[0]
+                top_ai_idx = np.argsort(log_prob_diff)[-20:][::-1]
+                top_human_idx = np.argsort(log_prob_diff)[:20]
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    fig = px.bar(
+                        x=log_prob_diff[top_ai_idx], y=vocab[top_ai_idx],
+                        orientation="h", title="Top AI-associated words",
+                        color_discrete_sequence=["#ec4899"],
+                    )
+                    fig.update_layout(yaxis=dict(autorange="reversed"))
+                    st.plotly_chart(fig, use_container_width=True)
+                with col_b:
+                    fig = px.bar(
+                        x=np.abs(log_prob_diff[top_human_idx]), y=vocab[top_human_idx],
+                        orientation="h", title="Top Human-associated words",
+                        color_discrete_sequence=["#6366f1"],
+                    )
+                    fig.update_layout(yaxis=dict(autorange="reversed"))
+                    st.plotly_chart(fig, use_container_width=True)
+                st.caption("Score = log P(word | AI) − log P(word | Human). Higher magnitude = stronger association.")
             else:
                 st.info("Feature visualization not available for this model type.")
         except Exception as e:
